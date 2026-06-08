@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crochet Designs — Handcrafted with Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf6ec;
+    --blush: #f4c2a1;
+    --terracotta: #c9714a;
+    --rust: #a84b2f;
+    --sage: #7a9e7e;
+    --deep-green: #3d6647;
+    --warm-brown: #5c3d2e;
+    --gold: #d4a843;
+    --light-sage: #cfe0d0;
+    --text: #2c1a0e;
+    --text-light: #7a5c4a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(253, 246, 236, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--blush);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    box-shadow: 0 2px 20px rgba(92,61,46,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--rust);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--sage); }
+
+  .nav-links {
+    display: flex; gap: 0.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--warm-brown);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.9rem;
+    border-radius: 30px;
+    transition: all 0.3s;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--terracotta);
+    color: white;
+  }
+
+  /* ===== PAGES ===== */
+  .page { display: none; padding-top: 72px; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: calc(100vh - 72px);
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--cream) 0%, #f9ede0 50%, #f0e8d8 100%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9714a' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='50' cy='10' r='2'/%3E%3Ccircle cx='10' cy='50' r='2'/%3E%3Ccircle cx='50' cy='50' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Decorative yarn balls */
+  .yarn-deco {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: float 6s ease-in-out infinite;
+  }
+  .yarn-deco:nth-child(1) { width: 300px; height: 300px; background: var(--terracotta); top: -80px; right: -60px; animation-delay: 0s; }
+  .yarn-deco:nth-child(2) { width: 180px; height: 180px; background: var(--sage); bottom: 60px; right: 200px; animation-delay: 2s; }
+  .yarn-deco:nth-child(3) { width: 120px; height: 120px; background: var(--gold); top: 200px; right: 100px; animation-delay: 4s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 680px;
+    padding: 4rem 3rem 4rem 5rem;
+    animation: heroIn 1s ease both;
+  }
+
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--light-sage);
+    color: var(--deep-green);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--warm-brown);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+  }
+
+  .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: white;
+    box-shadow: 0 4px 20px rgba(201, 113, 74, 0.4);
+  }
+
+  .btn-primary:hover { background: var(--rust); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201, 113, 74, 0.5); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--warm-brown);
+    border: 2px solid var(--warm-brown);
+  }
+
+  .btn-outline:hover { background: var(--warm-brown); color: white; transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--blush);
+  }
+
+  .stat h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--terracotta);
+    font-weight: 800;
+  }
+
+  .stat p { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* Crochet SVG illustration */
+  .hero-illustration {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 45%;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-illustration svg { width: 100%; height: 100%; }
+
+  /* ===== SECTION COMMON ===== */
+  .section-header {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .section-tag {
+    display: inline-block;
+    background: var(--blush);
+    color: var(--rust);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--warm-brown);
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    color: var(--text-light);
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+
+  /* ===== SERVICES PAGE ===== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 4rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--blush);
+    box-shadow: 0 4px 20px rgba(92,61,46,0.05);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--terracotta), var(--gold));
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(92,61,46,0.12);
+  }
+
+  .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--warm-brown);
+    margin-bottom: 0.8rem;
+  }
+
+  .service-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .service-price {
+    display: inline-block;
+    background: var(--light-sage);
+    color: var(--deep-green);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  /* ===== GALLERY PAGE ===== */
+  .gallery-filters {
+    display: flex; gap: 0.8rem; flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem 2rem 2rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    border: 2px solid var(--blush);
+    background: white;
+    color: var(--warm-brown);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.05em;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: white;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 4rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .gallery-item {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(92,61,46,0.1);
+    transition: all 0.4s;
+  }
+
+  .gallery-item:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(92,61,46,0.2); }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+  .gallery-item svg { width: 100%; height: 100%; display: block; }
+
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(92,61,46,0.85) 0%, transparent 60%);
+    opacity: 0;
+    transition: all 0.4s;
+    display: flex; align-items: flex-end;
+    padding: 1.2rem;
+  }
+
+  .gallery-overlay h4 {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+  }
+
+  /* ===== ABOUT PAGE ===== */
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--warm-brown);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text h2 em { color: var(--terracotta); font-style: italic; }
+
+  .about-text p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    font-size: 0.98rem;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-visual svg {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(92,61,46,0.15);
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    background: var(--terracotta);
+    color: white;
+    border-radius: 50%;
+    width: 120px; height: 120px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(201,113,74,0.4);
+  }
+
+  .about-badge strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .about-badge span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+  .team-section {
+    background: white;
+    padding: 4rem 2rem;
+    margin-top: 2rem;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 2rem auto 0;
+    padding: 0 2rem;
+  }
+
+  .team-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    background: var(--cream);
+    transition: transform 0.3s;
+  }
+
+  .team-card:hover { transform: translateY(-4px); }
+
+  .team-avatar {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    border: 3px solid var(--blush);
+  }
+
+  .team-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--warm-brown);
+    margin-bottom: 0.3rem;
+  }
+
+  .team-card span {
+    font-size: 0.82rem;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+  }
+
+  /* ===== REVIEWS PAGE ===== */
+  #reviews { background: linear-gradient(135deg, #fdf6ec 0%, #f9ede0 100%); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.8rem;
+    padding: 2rem 4rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .review-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid var(--blush);
+    box-shadow: 0 4px 16px rgba(92,61,46,0.06);
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .review-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(92,61,46,0.1); }
+
+  .review-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem; right: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--blush);
+    line-height: 1;
+  }
+
+  .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+
+  .review-text {
+    color: var(--text-light);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .reviewer {
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+
+  .reviewer-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--light-sage);
+    flex-shrink: 0;
+  }
+
+  .reviewer-info h5 {
+    font-weight: 700;
+    color: var(--warm-brown);
+    font-size: 0.9rem;
+  }
+
+  .reviewer-info span {
+    font-size: 0.78rem;
+    color: var(--text-light);
+  }
+
+  .rating-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    background: var(--warm-brown);
+    color: white;
+    padding: 3rem 2rem;
+    margin: 0 4rem 3rem;
+    border-radius: 20px;
+  }
+
+  .rating-big h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .rating-big p { font-size: 0.85rem; opacity: 0.7; margin-top: 0.3rem; }
+
+  .rating-bars { flex: 1; max-width: 280px; }
+
+  .bar-row {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .bar-label { font-size: 0.8rem; width: 12px; color: white; }
+
+  .bar-track {
+    flex: 1; height: 8px; background: rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden;
+  }
+
+  .bar-fill { height: 100%; background: var(--gold); border-radius: 4px; }
+
+  .bar-count { font-size: 0.78rem; color: rgba(255,255,255,0.6); width: 20px; text-align: right; }
+
+  /* ===== CONTACT PAGE ===== */
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+    padding: 3rem 5rem 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--warm-brown);
+    margin-bottom: 1rem;
+  }
+
+  .contact-info p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--blush);
+  }
+
+  .contact-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: var(--blush);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .contact-detail h5 {
+    font-weight: 700;
+    color: var(--warm-brown);
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-detail p {
+    color: var(--text-light);
+    font-size: 0.88rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .contact-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid var(--blush);
+    box-shadow: 0 8px 40px rgba(92,61,46,0.08);
+  }
+
+  .contact-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--warm-brown);
+    margin-bottom: 1.8rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group { margin-bottom: 1rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--warm-brown);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 2px solid var(--blush);
+    border-radius: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--cream);
+    transition: border-color 0.3s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--terracotta);
+    background: white;
+  }
+
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    color: var(--deep-green);
+  }
+
+  .form-success h4 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 0.5rem; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--warm-brown);
+    color: rgba(255,255,255,0.85);
+    padding: 4rem 4rem 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-brand h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: white;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-brand h3 span { color: var(--blush); }
+
+  .footer-brand p {
+    line-height: 1.7;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1.5rem;
+  }
+
+  .social-links { display: flex; gap: 0.8rem; }
+
+  .social-link {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+
+  .social-link:hover { background: var(--terracotta); }
+
+  .footer-col h4 {
+    color: white;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.6rem; }
+  .footer-col a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+  .footer-col a:hover { color: var(--blush); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .hero-content { padding: 3rem 2rem; }
+    .hero-illustration { display: none; }
+    .about-hero, .contact-wrapper { grid-template-columns: 1fr; }
+    .gallery-grid, .services-grid, .reviews-grid { padding: 1rem 2rem 4rem; }
+    .rating-summary { margin: 0 2rem 2rem; flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .about-hero { padding: 2rem; }
+    .contact-wrapper { padding: 2rem; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a class="nav-logo" href="#" onclick="showPage('home')">Crochet<span>Designs</span></a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a href="#" onclick="showPage('services')" id="nav-services">Services</a></li>
+    <li><a href="#" onclick="showPage('gallery')" id="nav-gallery">Gallery</a></li>
+    <li><a href="#" onclick="showPage('about')" id="nav-about">About Us</a></li>
+    <li><a href="#" onclick="showPage('reviews')" id="nav-reviews">Reviews</a></li>
+    <li><a href="#" onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HOME PAGE ===== -->
+<div id="home" class="page active">
+  <section class="hero">
+    <div class="yarn-deco"></div>
+    <div class="yarn-deco"></div>
+    <div class="yarn-deco"></div>
+
+    <div class="hero-content">
+      <span class="hero-tag">✦ Handcrafted with Love</span>
+      <h1>Beautiful <em>Crochet</em><br>Designs Just<br>for You</h1>
+      <p>From cozy blankets to intricate mandalas — every stitch tells a story. Discover handmade crochet pieces crafted with passion, warmth, and timeless artistry.</p>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="showPage('gallery')">Browse Gallery</button>
+        <button class="btn btn-outline" onclick="showPage('contact')">Custom Order</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><h3>500+</h3><p>Designs Made</p></div>
+        <div class="stat"><h3>12+</h3><p>Years of Craft</p></div>
+        <div class="stat"><h3>300+</h3><p>Happy Clients</p></div>
+      </div>
+    </div>
+
+    <div class="hero-illustration">
+      <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <!-- Background -->
+        <rect width="500" height="600" fill="#f4ede2"/>
+        <!-- Large mandala / crochet wheel -->
+        <g transform="translate(250,280)">
+          <!-- Outer petals -->
+          <g opacity="0.8">
+            <ellipse cx="0" cy="-160" rx="28" ry="55" fill="#c9714a" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-160" rx="28" ry="55" fill="#d4a843" transform="rotate(45)"/>
+            <ellipse cx="0" cy="-160" rx="28" ry="55" fill="#7a9e7e" transform="rotate(90)"/>
+            <ellipse cx="0" cy="-160" rx="28" ry="55" fill="#c9714a" transform="rotate(135)"/>
+            <ellipse cx="0" cy="-160" rx="28" ry="55" fill="#d4a843" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-160" rx="28" ry="55" fill="#7a9e7e" transform="rotate(225)"/>
+            <ellipse cx="0" cy="-160" rx="28" ry="55" fill="#c9714a" transform="rotate(270)"/>
+            <ellipse cx="0" cy="-160" rx="28" ry="55" fill="#d4a843" transform="rotate(315)"/>
+          </g>
+          <!-- Mid ring -->
+          <circle cx="0" cy="0" r="108" stroke="#a84b2f" stroke-width="3" stroke-dasharray="8 4" fill="none"/>
+          <circle cx="0" cy="0" r="90" fill="#f4ede2" stroke="#c9714a" stroke-width="2"/>
+          <!-- Inner petals -->
+          <g opacity="0.9">
+            <ellipse cx="0" cy="-70" rx="18" ry="32" fill="#d4a843" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-70" rx="18" ry="32" fill="#7a9e7e" transform="rotate(60)"/>
+            <ellipse cx="0" cy="-70" rx="18" ry="32" fill="#c9714a" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-70" rx="18" ry="32" fill="#d4a843" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-70" rx="18" ry="32" fill="#7a9e7e" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-70" rx="18" ry="32" fill="#c9714a" transform="rotate(300)"/>
+          </g>
+          <!-- Center -->
+          <circle cx="0" cy="0" r="40" fill="#a84b2f"/>
+          <circle cx="0" cy="0" r="28" fill="#d4a843"/>
+          <circle cx="0" cy="0" r="16" fill="#f4ede2"/>
+          <circle cx="0" cy="0" r="7" fill="#c9714a"/>
+          <!-- Stitch dots outer ring -->
+          <circle cx="108" cy="0" r="5" fill="#c9714a"/>
+          <circle cx="-108" cy="0" r="5" fill="#c9714a"/>
+          <circle cx="0" cy="108" r="5" fill="#c9714a"/>
+          <circle cx="0" cy="-108" r="5" fill="#c9714a"/>
+          <circle cx="76" cy="76" r="5" fill="#d4a843"/>
+          <circle cx="-76" cy="76" r="5" fill="#d4a843"/>
+          <circle cx="76" cy="-76" r="5" fill="#d4a843"/>
+          <circle cx="-76" cy="-76" r="5" fill="#d4a843"/>
+        </g>
+        <!-- Yarn ball top left -->
+        <g transform="translate(60, 80)">
+          <circle cx="0" cy="0" r="42" fill="#7a9e7e"/>
+          <ellipse cx="0" cy="0" rx="42" ry="12" fill="none" stroke="#f4ede2" stroke-width="3" transform="rotate(-30)"/>
+          <ellipse cx="0" cy="0" rx="42" ry="12" fill="none" stroke="#f4ede2" stroke-width="3" transform="rotate(30)"/>
+          <ellipse cx="0" cy="0" rx="12" ry="42" fill="none" stroke="#f4ede2" stroke-width="3"/>
+          <path d="M 40 -15 Q 80 -40 120 0" stroke="#7a9e7e" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </g>
+        <!-- Yarn ball bottom right -->
+        <g transform="translate(420, 480)">
+          <circle cx="0" cy="0" r="50" fill="#d4a843"/>
+          <ellipse cx="0" cy="0" rx="50" ry="15" fill="none" stroke="#f4ede2" stroke-width="3" transform="rotate(-30)"/>
+          <ellipse cx="0" cy="0" rx="50" ry="15" fill="none" stroke="#f4ede2" stroke-width="3" transform="rotate(30)"/>
+          <ellipse cx="0" cy="0" rx="15" ry="50" fill="none" stroke="#f4ede2" stroke-width="3"/>
+        </g>
+        <!-- Small flower top right -->
+        <g transform="translate(420, 90)">
+          <circle cx="0" cy="-28" r="14" fill="#c9714a" opacity="0.7"/>
+          <circle cx="0" cy="28" r="14" fill="#c9714a" opacity="0.7"/>
+          <circle cx="28" cy="0" r="14" fill="#7a9e7e" opacity="0.7"/>
+          <circle cx="-28" cy="0" r="14" fill="#7a9e7e" opacity="0.7"/>
+          <circle cx="20" cy="-20" r="10" fill="#d4a843" opacity="0.7"/>
+          <circle cx="-20" cy="-20" r="10" fill="#d4a843" opacity="0.7"/>
+          <circle cx="20" cy="20" r="10" fill="#c9714a" opacity="0.7"/>
+          <circle cx="-20" cy="20" r="10" fill="#c9714a" opacity="0.7"/>
+          <circle cx="0" cy="0" r="18" fill="#a84b2f"/>
+          <circle cx="0" cy="0" r="10" fill="#f4ede2"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Features strip -->
+  <div style="background:var(--warm-brown); padding:2rem 4rem; display:flex; justify-content:center; gap:4rem; flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:0.8rem;color:white;">
+      <span style="font-size:1.5rem;">🧶</span>
+      <div><div style="font-weight:700;font-size:0.9rem;">100% Handmade</div><div style="font-size:0.78rem;opacity:0.6;">Every piece unique</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:0.8rem;color:white;">
+      <span style="font-size:1.5rem;">🎨</span>
+      <div><div style="font-weight:700;font-size:0.9rem;">Custom Colors</div><div style="font-size:0.78rem;opacity:0.6;">You pick the palette</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:0.8rem;color:white;">
+      <span style="font-size:1.5rem;">📦</span>
+      <div><div style="font-weight:700;font-size:0.9rem;">Gift Wrapping</div><div style="font-size:0.78rem;opacity:0.6;">Ready to gift</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:0.8rem;color:white;">
+      <span style="font-size:1.5rem;">💬</span>
+      <div><div style="font-weight:700;font-size:0.9rem;">Personal Consultation</div><div style="font-size:0.78rem;opacity:0.6;">Chat with our crafters</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICES PAGE ===== -->
+<div id="services" class="page">
+  <div class="section-header">
+    <span class="section-tag">What We Offer</span>
+    <h2>Our Crochet Services</h2>
+    <p>From bespoke custom orders to pattern teaching — we bring yarn and imagination to life for every occasion.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🧣</div>
+      <h3>Custom Apparel</h3>
+      <p>Handcrafted sweaters, cardigans, scarves, hats, and mittens made to your measurements and color preferences. Perfect gifts for loved ones.</p>
+      <span class="service-price">From $45</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛏️</div>
+      <h3>Home Décor Pieces</h3>
+      <p>Beautiful throws, blankets, pillow covers, table runners, and wall hangings that bring warmth and texture to any living space.</p>
+      <span class="service-price">From $60</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌸</div>
+      <h3>Floral & Mandala Art</h3>
+      <p>Intricate mandala wall art, floral motifs, and bohemian décor pieces. Each one is a meditative masterpiece with hundreds of stitches.</p>
+      <span class="service-price">From $80</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧸</div>
+      <h3>Amigurumi Toys</h3>
+      <p>Adorable crocheted stuffed animals and characters. Child-safe, soft, and endlessly charming — perfect for baby showers and birthdays.</p>
+      <span class="service-price">From $30</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👜</div>
+      <h3>Bags & Accessories</h3>
+      <p>Stylish tote bags, crossbody bags, bucket bags, jewelry, and more. Functional art you can carry everywhere you go.</p>
+      <span class="service-price">From $35</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📖</div>
+      <h3>Pattern & Workshops</h3>
+      <p>Learn to crochet with our beginner-to-advanced workshops. We also offer downloadable patterns for those who love to DIY.</p>
+      <span class="service-price">From $25</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💒</div>
+      <h3>Wedding & Events</h3>
+      <p>Bridal accessories, ceremony décor, and event centerpieces. Add a handmade touch that guests will remember forever.</p>
+      <span class="service-price">From $120</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎁</div>
+      <h3>Gift Sets & Bundles</h3>
+      <p>Curated crochet gift sets beautifully packaged — ideal for holidays, baby showers, housewarmings, and special occasions.</p>
+      <span class="service-price">From $55</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== GALLERY PAGE ===== -->
+<div id="gallery" class="page">
+  <div class="section-header">
+    <span class="section-tag">Our Portfolio</span>
+    <h2>Crochet Gallery</h2>
+    <p>A glimpse into our handcrafted world — each piece made with care, creativity, and colorful yarn.</p>
+  </div>
+  <div class="gallery-filters">
+    <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+    <button class="filter-btn" onclick="filterGallery('blankets', this)">Blankets</button>
+    <button class="filter-btn" onclick="filterGallery('flowers', this)">Flowers</button>
+    <button class="filter-btn" onclick="filterGallery('toys', this)">Toys</button>
+    <button class="filter-btn" onclick="filterGallery('bags', this)">Bags</button>
+    <button class="filter-btn" onclick="filterGallery('mandalas', this)">Mandalas</button>
+  </div>
+  <div class="gallery-grid" id="galleryGrid">
+    <!-- Items generated by JS -->
+  </div>
+</div>
+
+<!-- ===== ABOUT PAGE ===== -->
+<div id="about" class="page">
+  <div class="about-hero">
+    <div class="about-text">
+      <span class="section-tag">Our Story</span>
+      <h2>Crafting <em>Love</em> into Every Stitch</h2>
+      <p>CrochetDesigns was born in a small sunlit room with a single hook, a ball of yarn, and a grandmother's whispered patterns. What started as a hobby became a calling — a way to slow down, breathe, and create something truly lasting.</p>
+      <p>For over 12 years, we've been weaving warmth into homes around the world. Our designs blend traditional techniques with modern aesthetics, creating pieces that are both heirloom-quality and everyday beautiful.</p>
+      <p>We believe in the power of handmade — the way imperfection makes something perfectly human, and the way a hand-stitched gift carries warmth that no machine can replicate.</p>
+      <div class="btn-group" style="margin-top:1.5rem;">
+        <button class="btn btn-primary" onclick="showPage('contact')">Work With Us</button>
+      </div>
+    </div>
+    <div class="about-visual">
+      <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <rect width="400" height="420" rx="20" fill="#c9714a"/>
+        <!-- Decorative crochet pattern background -->
+        <g opacity="0.2">
+          <circle cx="50" cy="50" r="30" stroke="white" stroke-width="2"/>
+          <circle cx="50" cy="50" r="20" stroke="white" stroke-width="2"/>
+          <circle cx="350" cy="50" r="30" stroke="white" stroke-width="2"/>
+          <circle cx="50" cy="370" r="30" stroke="white" stroke-width="2"/>
+          <circle cx="350" cy="370" r="30" stroke="white" stroke-width="2"/>
+        </g>
+        <!-- Big centered granny square -->
+        <rect x="80" y="80" width="240" height="260" rx="12" fill="#f4ede2"/>
+        <!-- Granny square inner ring -->
+        <g transform="translate(200, 210)">
+          <!-- Outer layer -->
+          <rect x="-90" y="-90" width="180" height="180" rx="8" fill="none" stroke="#c9714a" stroke-width="3"/>
+          <!-- Corner flowers -->
+          <g transform="translate(-70,-70)"><circle cx="0" cy="-14" r="8" fill="#d4a843"/><circle cx="0" cy="14" r="8" fill="#d4a843"/><circle cx="-14" cy="0" r="8" fill="#d4a843"/><circle cx="14" cy="0" r="8" fill="#d4a843"/><circle cx="0" cy="0" r="9" fill="#c9714a"/></g>
+          <g transform="translate(70,-70)"><circle cx="0" cy="-14" r="8" fill="#7a9e7e"/><circle cx="0" cy="14" r="8" fill="#7a9e7e"/><circle cx="-14" cy="0" r="8" fill="#7a9e7e"/><circle cx="14" cy="0" r="8" fill="#7a9e7e"/><circle cx="0" cy="0" r="9" fill="#3d6647"/></g>
+          <g transform="translate(-70,70)"><circle cx="0" cy="-14" r="8" fill="#7a9e7e"/><circle cx="0" cy="14" r="8" fill="#7a9e7e"/><circle cx="-14" cy="0" r="8" fill="#7a9e7e"/><circle cx="14" cy="0" r="8" fill="#7a9e7e"/><circle cx="0" cy="0" r="9" fill="#3d6647"/></g>
+          <g transform="translate(70,70)"><circle cx="0" cy="-14" r="8" fill="#d4a843"/><circle cx="0" cy="14" r="8" fill="#d4a843"/><circle cx="-14" cy="0" r="8" fill="#d4a843"/><circle cx="14" cy="0" r="8" fill="#d4a843"/><circle cx="0" cy="0" r="9" fill="#c9714a"/></g>
+          <!-- Center flower -->
+          <circle cx="0" cy="-30" r="16" fill="#c9714a"/>
+          <circle cx="0" cy="30" r="16" fill="#c9714a"/>
+          <circle cx="-30" cy="0" r="16" fill="#7a9e7e"/>
+          <circle cx="30" cy="0" r="16" fill="#7a9e7e"/>
+          <circle cx="0" cy="0" r="22" fill="#d4a843"/>
+          <circle cx="0" cy="0" r="12" fill="#f4ede2"/>
+          <circle cx="0" cy="0" r="5" fill="#c9714a"/>
+        </g>
+        <!-- Hook graphic -->
+        <g transform="translate(340, 370)">
+          <line x1="-5" y1="-40" x2="-5" y2="10" stroke="#a84b2f" stroke-width="5" stroke-linecap="round"/>
+          <path d="M -5 10 Q -5 25 -18 25 Q -28 25 -28 15" stroke="#a84b2f" stroke-width="5" fill="none" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <div class="about-badge">
+        <strong>12+</strong>
+        <span>Years of craft</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Values -->
+  <div style="background:white;padding:4rem 2rem;">
+    <div class="section-header" style="padding-top:0;">
+      <span class="section-tag">Our Values</span>
+      <h2>What We Believe In</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:1000px;margin:2rem auto 0;padding:0 2rem;">
+      <div style="text-align:center;padding:2rem 1rem;">
+        <div style="font-size:2.5rem;margin-bottom:0.8rem;">♻️</div>
+        <h4 style="font-family:'Playfair Display',serif;color:var(--warm-brown);margin-bottom:0.5rem;">Sustainable</h4>
+        <p style="color:var(--text-light);font-size:0.88rem;line-height:1.6;">We use eco-friendly, natural yarn fibers sourced responsibly.</p>
+      </div>
+      <div style="text-align:center;padding:2rem 1rem;">
+        <div style="font-size:2.5rem;margin-bottom:0.8rem;">💛</div>
+        <h4 style="font-family:'Playfair Display',serif;color:var(--warm-brown);margin-bottom:0.5rem;">Handmade</h4>
+        <p style="color:var(--text-light);font-size:0.88rem;line-height:1.6;">Every single piece is made by hand — no shortcuts, ever.</p>
+      </div>
+      <div style="text-align:center;padding:2rem 1rem;">
+        <div style="font-size:2.5rem;margin-bottom:0.8rem;">🎨</div>
+        <h4 style="font-family:'Playfair Display',serif;color:var(--warm-brown);margin-bottom:0.5rem;">Creative</h4>
+        <p style="color:var(--text-light);font-size:0.88rem;line-height:1.6;">We treat crochet as a genuine art form with bold, original designs.</p>
+      </div>
+      <div style="text-align:center;padding:2rem 1rem;">
+        <div style="font-size:2.5rem;margin-bottom:0.8rem;">🤝</div>
+        <h4 style="font-family:'Playfair Display',serif;color:var(--warm-brown);margin-bottom:0.5rem;">Community</h4>
+        <p style="color:var(--text-light);font-size:0.88rem;line-height:1.6;">Teaching, sharing patterns, and building a crochet-loving community.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team -->
+  <div class="team-section">
+    <div class="section-header" style="padding-top:0;">
+      <span class="section-tag">Meet the Team</span>
+      <h2>The Hands Behind the Hooks</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">
+          <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg"><rect width="90" height="90" fill="#c9714a"/><circle cx="45" cy="35" r="18" fill="#f4ede2"/><ellipse cx="45" cy="75" rx="28" ry="20" fill="#f4ede2"/></svg>
+        </div>
+        <h4>Maria Santos</h4>
+        <span>Founder & Lead Designer</span>
+        <p style="color:var(--text-light);font-size:0.82rem;margin-top:0.5rem;line-height:1.5;">12+ years of crochet mastery with a passion for mandala and floral art.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">
+          <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg"><rect width="90" height="90" fill="#7a9e7e"/><circle cx="45" cy="35" r="18" fill="#f4ede2"/><ellipse cx="45" cy="75" rx="28" ry="20" fill="#f4ede2"/></svg>
+        </div>
+        <h4>Priya Nair</h4>
+        <span>Amigurumi Specialist</span>
+        <p style="color:var(--text-light);font-size:0.82rem;margin-top:0.5rem;line-height:1.5;">Creates charming stuffed characters that bring smiles to children worldwide.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">
+          <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg"><rect width="90" height="90" fill="#d4a843"/><circle cx="45" cy="35" r="18" fill="#f4ede2"/><ellipse cx="45" cy="75" rx="28" ry="20" fill="#f4ede2"/></svg>
+        </div>
+        <h4>Elena Kowalski</h4>
+        <span>Fashion & Accessories</span>
+        <p style="color:var(--text-light);font-size:0.82rem;margin-top:0.5rem;line-height:1.5;">Blends fashion design with crochet craft for wearable art pieces.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">
+          <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg"><rect width="90" height="90" fill="#a84b2f"/><circle cx="45" cy="35" r="18" fill="#f4ede2"/><ellipse cx="45" cy="75" rx="28" ry="20" fill="#f4ede2"/></svg>
+        </div>
+        <h4>Fatima Al-Hassan</h4>
+        <span>Workshop Instructor</span>
+        <p style="color:var(--text-light);font-size:0.82rem;margin-top:0.5rem;line-height:1.5;">Patient, passionate teacher who has helped 200+ beginners find their stitch.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== REVIEWS PAGE ===== -->
+<div id="reviews" class="page">
+  <div class="section-header">
+    <span class="section-tag">Customer Love</span>
+    <h2>What Our Clients Say</h2>
+    <p>Real stories from people who've brought a piece of handmade warmth into their homes and hearts.</p>
+  </div>
+
+  <div class="rating-summary">
+    <div class="rating-big">
+      <h2>4.9</h2>
+      <div style="color:var(--gold);font-size:1.1rem;">★★★★★</div>
+      <p>Overall Rating</p>
+    </div>
+    <div class="rating-bars">
+      <div class="bar-row"><span class="bar-label">5</span><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><span class="bar-count">220</span></div>
+      <div class="bar-row"><span class="bar-label">4</span><div class="bar-track"><div class="bar-fill" style="width:9%"></div></div><span class="bar-count">22</span></div>
+      <div class="bar-row"><span class="bar-label">3</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div><span class="bar-count">5</span></div>
+      <div class="bar-row"><span class="bar-label">2</span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div><span class="bar-count">2</span></div>
+      <div class="bar-row"><span class="bar-label">1</span><div class="bar-track"><div class="bar-fill" style="width:0.5%"></div></div><span class="bar-count">1</span></div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:2rem;color:var(--blush);font-family:'Playfair Display',serif;font-weight:800;">300+</div>
+      <div style="font-size:0.85rem;opacity:0.7;">Verified Reviews</div>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">I ordered a custom baby blanket for my niece and it was beyond what I imagined. The colors, the texture — it's an absolute treasure. Maria even added a tiny name tag in the corner!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar"><svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" rx="22" fill="#c9714a"/><circle cx="22" cy="17" r="8" fill="#f4ede2"/><ellipse cx="22" cy="36" rx="13" ry="9" fill="#f4ede2"/></svg></div>
+        <div class="reviewer-info"><h5>Sophie Turner</h5><span>New York, USA</span></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">The mandala wall hanging I bought transformed my living room completely. Guests always ask where it's from. The craftsmanship is absolutely stunning — every stitch is perfect.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar"><svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" rx="22" fill="#7a9e7e"/><circle cx="22" cy="17" r="8" fill="#f4ede2"/><ellipse cx="22" cy="36" rx="13" ry="9" fill="#f4ede2"/></svg></div>
+        <div class="reviewer-info"><h5>Arjun Mehta</h5><span>London, UK</span></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">Priya made the most adorable little elephant amigurumi for my daughter's birthday. She hasn't put it down since! The quality is incredible — soft, durable, and so loveable.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar"><svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" rx="22" fill="#d4a843"/><circle cx="22" cy="17" r="8" fill="#f4ede2"/><ellipse cx="22" cy="36" rx="13" ry="9" fill="#f4ede2"/></svg></div>
+        <div class="reviewer-info"><h5>Camille Dubois</h5><span>Paris, France</span></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">I took Elena's beginner workshop and fell completely in love with crochet. By the end of 3 sessions I had made my first granny square. So patient and inspiring!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar"><svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" rx="22" fill="#a84b2f"/><circle cx="22" cy="17" r="8" fill="#f4ede2"/><ellipse cx="22" cy="36" rx="13" ry="9" fill="#f4ede2"/></svg></div>
+        <div class="reviewer-info"><h5>Yuki Tanaka</h5><span>Tokyo, Japan</span></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">Ordered a crochet tote bag and received it within a week, beautifully packaged. It's stylish, sturdy, and I get so many compliments. Will definitely order again!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar"><svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" rx="22" fill="#3d6647"/><circle cx="22" cy="17" r="8" fill="#f4ede2"/><ellipse cx="22" cy="36" rx="13" ry="9" fill="#f4ede2"/></svg></div>
+        <div class="reviewer-info"><h5>Aisha Mohamed</h5><span>Dubai, UAE</span></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★☆</div>
+      <p class="review-text">The Christmas gift set was beautiful and my family loved it. Slight delay in shipping but the quality more than made up for it. Will be ordering wedding décor next year!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar"><svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" rx="22" fill="#c9714a"/><circle cx="22" cy="17" r="8" fill="#f4ede2"/><ellipse cx="22" cy="36" rx="13" ry="9" fill="#f4ede2"/></svg></div>
+        <div class="reviewer-info"><h5>Laura Bianchi</h5><span>Milan, Italy</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONTACT PAGE ===== -->
+<div id="contact" class="page">
+  <div class="section-header">
+    <span class="section-tag">Get in Touch</span>
+    <h2>Let's Create Together</h2>
+    <p>Have a custom order in mind? A question about our work? We'd love to hear from you — every great piece starts with a conversation.</p>
+  </div>
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <h3>We're Here for You</h3>
+      <p>Whether you want a one-of-a-kind gift, have a question, or just want to say hello — reach out anytime. We respond within 24 hours.</p>
+
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <div><h5>Studio Location</h5><p>42 Yarn Lane, Crafters Quarter<br>Brooklyn, NY 11201, USA</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📞</div>
+        <div><h5>Phone</h5><p>+1 (718) 555-0182</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">✉️</div>
+        <div><h5>Email</h5><p>hello@crochetdesigns.com</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">🕐</div>
+        <div><h5>Studio Hours</h5><p>Mon–Fri: 9am–6pm<br>Saturday: 10am–4pm</p></div>
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <h5 style="font-size:0.82rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--warm-brown);margin-bottom:0.8rem;font-weight:700;">Follow Our Work</h5>
+        <div style="display:flex;gap:0.7rem;">
+          <a href="#" style="width:40px;height:40px;border-radius:10px;background:var(--terracotta);display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;font-size:1.1rem;">📸</a>
+          <a href="#" style="width:40px;height:40px;border-radius:10px;background:var(--sage);display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;font-size:1.1rem;">🎵</a>
+          <a href="#" style="width:40px;height:40px;border-radius:10px;background:var(--gold);display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;font-size:1.1rem;">📌</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Send a Message</h3>
+      <div id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="Maria"/></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Santos"/></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"/></div>
+        <div class="form-group"><label>Subject</label>
+          <select>
+            <option>Custom Order Inquiry</option>
+            <option>Workshop Registration</option>
+            <option>Pattern Purchase</option>
+            <option>General Question</option>
+            <option>Wholesale / Retail</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Your Message</label><textarea placeholder="Tell us about your dream crochet piece — colors, size, occasion, and any special requests..."></textarea></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="submitForm()">Send Message ✦</button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div style="font-size:3rem;">🧶</div>
+        <h4>Message Sent!</h4>
+        <p style="color:var(--text-light);margin-top:0.5rem;">Thank you! We'll get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Crochet<span>Designs</span></h3>
+      <p>Handcrafted with love, one stitch at a time. Making the world warmer, cozier, and more colorful since 2012.</p>
+      <div class="social-links">
+        <a href="#" class="social-link">📸</a>
+        <a href="#" class="social-link">🎵</a>
+        <a href="#" class="social-link">📌</a>
+        <a href="#" class="social-link">🐦</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('services')">Services</a></li>
+        <li><a onclick="showPage('gallery')">Gallery</a></li>
+        <li><a onclick="showPage('about')">About Us</a></li>
+        <li><a onclick="showPage('reviews')">Reviews</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Custom Apparel</a></li>
+        <li><a href="#">Home Décor</a></li>
+        <li><a href="#">Mandalas & Art</a></li>
+        <li><a href="#">Amigurumi Toys</a></li>
+        <li><a href="#">Workshops</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Brooklyn, NY 11201</a></li>
+        <li><a href="#">+1 (718) 555-0182</a></li>
+        <li><a href="#">hello@crochetdesigns.com</a></li>
+        <li><a onclick="showPage('contact')">Send a Message</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 CrochetDesigns. All rights reserved.</span>
+    <span>Made with 🧶 & ❤️</span>
+  </div>
+</footer>
+
+<script>
+// ===== PAGE NAVIGATION =====
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const navEl = document.getElementById('nav-' + id);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'gallery') buildGallery();
+}
+
+// ===== GALLERY =====
+const galleryItems = [
+  { title: "Mandala Sun Blanket", category: "mandalas", colors: ["#c9714a","#d4a843","#7a9e7e","#f4ede2","#a84b2f"] },
+  { title: "Rainbow Granny Square", category: "blankets", colors: ["#e74c3c","#e67e22","#f1c40f","#2ecc71","#3498db","#9b59b6"] },
+  { title: "Rose Bouquet Motif", category: "flowers", colors: ["#e91e8c","#ff6b9d","#c2185b","#f8bbd9","#4caf50"] },
+  { title: "Bunny Amigurumi", category: "toys", colors: ["#f4ede2","#e8d5b7","#c9b89a","#7a5c4a","#ff9a9e"] },
+  { title: "Boho Tote Bag", category: "bags", colors: ["#8d6e63","#bcaaa4","#d4a843","#7a9e7e","#f4ede2"] },
+  { title: "Ocean Wave Throw", category: "blankets", colors: ["#0077b6","#00b4d8","#90e0ef","#caf0f8","#023e8a"] },
+  { title: "Sunflower Mandala", category: "mandalas", colors: ["#ffd700","#ff8c00","#228b22","#8b4513","#f4ede2"] },
+  { title: "Spring Wildflowers", category: "flowers", colors: ["#ff6b6b","#ffd93d","#6bcb77","#4d96ff","#ff6bcd"] },
+  { title: "Bear Amigurumi", category: "toys", colors: ["#795548","#a1887f","#d7ccc8","#4e342e","#ff8a65"] },
+  { title: "Crossbody Sling Bag", category: "bags", colors: ["#c9714a","#d4a843","#3d6647","#f4ede2","#a84b2f"] },
+  { title: "Desert Rose Afghan", category: "blankets", colors: ["#c9714a","#d4a843","#f4ede2","#7a9e7e","#5c3d2e"] },
+  { title: "Celtic Mandala Art", category: "mandalas", colors: ["#3d6647","#7a9e7e","#d4a843","#c9714a","#f4ede2"] },
+];
+
+let currentFilter = 'all';
+
+function buildGallery(filter) {
+  if (filter) currentFilter = filter;
+  const grid = document.getElementById('galleryGrid');
+  const filtered = currentFilter === 'all' ? galleryItems : galleryItems.filter(i => i.category === currentFilter);
+  grid.innerHTML = filtered.map((item, i) => `
+    <div class="gallery-item" style="animation: fadeUp 0.4s ease ${i * 0.06}s both;">
+      ${makeCrochetSVG(item)}
+      <div class="gallery-overlay"><h4>${item.title}</h4></div>
+    </div>
+  `).join('');
+}
+
+function makeCrochetSVG(item) {
+  const c = item.colors;
+  const cat = item.category;
+  if (cat === 'mandalas') {
+    return `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <rect width="300" height="300" fill="${c[3] || '#f4ede2'}"/>
+      <g transform="translate(150,150)">
+        ${[0,45,90,135,180,225,270,315].map((a,i) => `<ellipse cx="0" cy="-100" rx="22" ry="45" fill="${c[i%c.length]}" transform="rotate(${a})" opacity="0.85"/>`).join('')}
+        <circle cx="0" cy="0" r="65" fill="${c[3]}"/>
+        ${[0,60,120,180,240,300].map((a,i) => `<ellipse cx="0" cy="-42" rx="14" ry="24" fill="${c[i%c.length]}" transform="rotate(${a})"/>`).join('')}
+        <circle cx="0" cy="0" r="25" fill="${c[0]}"/>
+        <circle cx="0" cy="0" r="14" fill="${c[2]}"/>
+        <circle cx="0" cy="0" r="6" fill="${c[3]}"/>
+      </g>
+    </svg>`;
+  }
+  if (cat === 'blankets') {
+    return `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <rect width="300" height="300" fill="${c[0] || '#c9714a'}"/>
+      ${Array.from({length:5}, (_,r) => Array.from({length:5}, (_,col) => {
+        const x = col*60+30, y = r*60+30;
+        const cc = c[(r+col)%c.length];
+        return `<rect x="${x-25}" y="${y-25}" width="50" height="50" rx="8" fill="${cc}" opacity="0.9"/>
+        <circle cx="${x}" cy="${y}" r="10" fill="${c[(r+col+2)%c.length]}"/>`;
+      }).join('')).join('')}
+    </svg>`;
+  }
+  if (cat === 'flowers') {
+    return `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <rect width="300" height="300" fill="#f9f0e8"/>
+      <g transform="translate(150,150)">
+        ${[0,45,90,135,180,225,270,315].map((a,i) => `<ellipse cx="0" cy="-65" rx="20" ry="38" fill="${c[i%c.length]}" transform="rotate(${a})" opacity="0.9"/>`).join('')}
+        <circle cx="0" cy="0" r="32" fill="${c[0]}"/>
+        <circle cx="0" cy="0" r="18" fill="${c[2]}"/>
+        <circle cx="0" cy="0" r="8" fill="white"/>
+      </g>
+      ${[[-80,-80],[-80,220],[220,-80],[220,220]].map(([x,y]) => `
+        <g transform="translate(${x},${y})">
+          ${[0,72,144,216,288].map((a,i) => `<ellipse cx="0" cy="-25" rx="10" ry="18" fill="${c[i%c.length]}" transform="rotate(${a})"/>`).join('')}
+          <circle cx="0" cy="0" r="12" fill="${c[1]}"/>
+        </g>
+      `).join('')}
+    </svg>`;
+  }
+  if (cat === 'toys') {
+    return `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <rect width="300" height="300" fill="#f0f8e8"/>
+      <ellipse cx="150" cy="175" rx="65" ry="75" fill="${c[0]}"/>
+      <circle cx="150" cy="95" r="58" fill="${c[0]}"/>
+      <circle cx="120" cy="48" r="28" fill="${c[0]}"/>
+      <circle cx="180" cy="48" r="28" fill="${c[0]}"/>
+      <circle cx="120" cy="48" r="16" fill="${c[2]}"/>
+      <circle cx="180" cy="48" r="16" fill="${c[2]}"/>
+      <circle cx="137" cy="90" r="10" fill="#2c1a0e" opacity="0.8"/>
+      <circle cx="163" cy="90" r="10" fill="#2c1a0e" opacity="0.8"/>
+      <circle cx="140" cy="88" r="3" fill="white"/>
+      <circle cx="166" cy="88" r="3" fill="white"/>
+      <ellipse cx="150" cy="108" rx="16" ry="10" fill="${c[1]}"/>
+      <circle cx="150" cy="108" r="6" fill="#2c1a0e" opacity="0.5"/>
+      <ellipse cx="90" cy="190" rx="25" ry="40" fill="${c[1]}" transform="rotate(-15,90,190)"/>
+      <ellipse cx="210" cy="190" rx="25" ry="40" fill="${c[1]}" transform="rotate(15,210,190)"/>
+    </svg>`;
+  }
+  if (cat === 'bags') {
+    return `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <rect width="300" height="300" fill="#f9f0e8"/>
+      <path d="M 100 120 L 200 120 L 220 260 L 80 260 Z" fill="${c[0]}"/>
+      <path d="M 115 120 Q 115 80 150 80 Q 185 80 185 120" fill="none" stroke="${c[1]}" stroke-width="8" stroke-linecap="round"/>
+      <rect x="80" y="118" width="140" height="16" rx="8" fill="${c[2]}"/>
+      ${[140,160,180,200,220,240].map(y => `<line x1="${80+(y-120)*0.4}" y1="${y}" x2="${220-(y-120)*0.4}" y2="${y}" stroke="${c[3]||'#f4ede2'}" stroke-width="2.5" opacity="0.6"/>`).join('')}
+      <circle cx="150" cy="190" r="18" fill="${c[1]}"/>
+      <circle cx="150" cy="190" r="10" fill="${c[3]||'#f4ede2'}"/>
+    </svg>`;
+  }
+  return `<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="300" fill="${c[0]}"/></svg>`;
+}
+
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  buildGallery(cat);
+}
+
+// ===== CONTACT FORM =====
+function submitForm() {
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => buildGallery());
+
+// Fade up animation
+const style = document.createElement('style');
+style.textContent = `@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
